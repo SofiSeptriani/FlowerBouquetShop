@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>FlowerBouquetShop</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icon Font Stylesheet -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet" />
+
+    <style>
+      /* CSS for Detail Artikel */
+      #detailModal .modal-body img {
+        max-width: 100%;
+        width: 40%;
+        height: auto;
+        object-fit: contain;
+        margin: 0 auto 1rem auto; /* Mengatur margin atas dan bawah menjadi 1rem, dan margin kiri dan kanan menjadi auto */
+        display: block; /* Untuk memastikan gambar berada di tengah */
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Spinner Start -->
+    <div
+      id="spinner"
+      class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50 d-flex align-items-center justify-content-center"
+    >
+      <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Navbar Start -->
+    <div class="container-fluid fixed-top">
+      <div class="container px-0">
+        <nav class="navbar navbar-light bg-white navbar-expand-xl">
+          <a href="index.html" class="navbar-brand">
+            <h1 class="text-primary display-6">FlowerBouquetShop</h1>
+          </a>
+          <button
+            class="navbar-toggler py-2 px-3"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+          >
+            <span class="fa fa-bars text-primary"></span>
+          </button>
+          <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
+            <div class="navbar-nav mx-auto">
+              <a href="index.html" class="nav-item nav-link active">Beranda</a>
+              <a href="shop.html" class="nav-item nav-link">Produk</a>
+              <a href="artikel.html" class="nav-item nav-link">Artikel</a>
+              <div class="nav-item dropdown">
+                <a
+                  href="#"
+                  class="nav-link dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  >Lainnya</a
+                >
+                <div class="dropdown-menu m-0 bg-secondary rounded-0">
+                  <a href="cart.html" class="dropdown-item">Keranjang</a>
+                  <a href="checkout.html" class="dropdown-item">Checkout</a>
+                  <a href="testimonial.html" class="dropdown-item">Reviews</a>
+                  <a href="history_transaksi.html" class="dropdown-item">History Transaksi</a>
+                </div>
+              </div>
+              <a href="contact.html" class="nav-item nav-link">Kontak</a>
+            </div>
+            <div class="d-flex m-3 me-0">
+              <button
+                class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+                data-bs-toggle="modal"
+                data-bs-target="#searchModal"
+              >
+                <i class="fas fa-search text-primary"></i>
+              </button>
+              <a href="cart.html" class="position-relative me-4 my-auto">
+                <i class="fa fa-shopping-bag fa-2x"></i>
+                <span
+                  class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+                  style="top: -5px; left: 15px; height: 20px; min-width: 20px"
+                  >3</span
+                >
+              </a>
+              <a href="Profil_pengguna.html" class="my-auto">
+                <i class="fas fa-user fa-2x"></i>
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Modal Search Start -->
+    <div
+      class="modal fade"
+      id="searchModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content rounded-0">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Search by keyword
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body d-flex align-items-center">
+            <div class="input-group w-75 mx-auto d-flex">
+              <input
+                type="search"
+                class="form-control p-3"
+                placeholder="keywords"
+                aria-describedby="search-icon-1"
+              />
+              <span id="search-icon-1" class="input-group-text p-3"
+                ><i class="fa fa-search"></i
+              ></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Search End -->
+
+    <!-- Single Page Header start -->
+    <div class="container-fluid page-header py-5">
+      <h1 class="text-center text-white display-6">Artikel</h1>
+      <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="#">Beranda</a></li>
+        <li class="breadcrumb-item"><a href="#">Halaman</a></li>
+        <li class="breadcrumb-item active text-white">Artikel</li>
+      </ol>
+    </div>
+    <!-- Single Page Header End -->
+
+    <!-- Arsip artikel Start-->
+    <div class="container-fluid vesitable py-5">
+      <div class="container py-5">
+        <h1 class="mb-0">Artikel</h1>
+        <div class="owl-carousel vegetable-carousel justify-content-center">
+          <div
+            class="border border-primary rounded position-relative vesitable-item"
+          >
+            <div class="vesitable-img">
+              <img
+                src="img/Bouquete Graduation/11.jpg"
+                class="img-fluid w-100 rounded-top"
+                alt=""
+              />
+            </div>
+            <div
+              class="text-white bg-primary px-3 py-1 rounded position-absolute"
+              style="top: 10px; right: 10px"
+            >
+              Artikel
+            </div>
+            <div class="p-4 rounded-bottom">
+              <h4>
+                Merayakan Kelulusan dengan Buket Graduation dari
+                FlowerBouquetShop
+              </h4>
+              <p>
+                25 April 2024 <br />
+                <br />
+                Rayakan momen istimewa kelulusan dengan buket graduation yang
+                dirancang khusus untuk memberikan ucapan selamat yang berkesan.
+              </p>
+              <div class="d-flex justify-content-center">
+                <a
+                  href="#"
+                  class="btn border border-secondary rounded-pill px-3 text-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#detailModal"
+                  data-title="Artikel"
+                  data-date="25 April 2024"
+                  data-content="Rayakan momen istimewa kelulusan dengan buket graduation yang dirancang khusus untuk memberikan ucapan selamat yang berkesan. Artikel ini menyoroti berbagai pilihan buket graduation yang kami tawarkan, dari bunga artificial hingga buket uang, semuanya dirancang untuk membuat hari kelulusan menjadi lebih istimewa. Kami juga memberikan tips tentang cara memilih buket graduation yang tepat untuk lulusan di hidup Anda. Dengan pilihan bunga artificial, bunga kawat bulu, dan buket uang, dimana Warna cerah dan desain menarik yang sesuai untuk perayaan kelulusan sebagai Simbol penghargaan dan ucapan selamat atas pencapaian."
+                  data-src="img/Bouquete Graduation/11.jpg"
+                  ><i class="fa fa-info-circle me-2 text-primary"></i>
+                  Selengkapnya</a
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="border border-primary rounded position-relative vesitable-item"
+          >
+            <div class="vesitable-img">
+              <img
+                src="img/Buket bunga Artificial/12.jpg"
+                class="img-fluid w-100 rounded-top"
+                alt=""
+              />
+            </div>
+            <div
+              class="text-white bg-primary px-3 py-1 rounded position-absolute"
+              style="top: 10px; right: 10px"
+            >
+              Artikel
+            </div>
+            <div class="p-4 rounded-bottom">
+              <h4>
+                Keunikan Buket Bunga Artificial: Keindahan yang Tahan Lama
+              </h4>
+              <p>
+                1 Mei 2024 <br />
+                <br />
+                Berbagai Keindahan dan keunggulan dari buket bunga artificial
+                dan mengapa mereka menjadi pilihan favorit banyak pelanggan.
+              </p>
+              <div class="d-flex justify-content-center">
+                <a
+                  href="#"
+                  class="btn border border-secondary rounded-pill px-3 text-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#detailModal"
+                  data-title="Artikel"
+                  data-date="1 Mei 2024 "
+                  data-content="Buket bunga artificial menjadi pilihan favorit banyak pelanggan karena memiliki keunggulan yang unik. 
+                  Mereka menawarkan keindahan yang abadi tanpa perlu perawatan rutin seperti bunga segar. 
+                  Dengan bunga artificial, Anda dapat menikmati kecantikan bunga tanpa khawatir akan layu atau mati.
+
+                  Salah satu keunggulan utama bunga artificial adalah ketahanannya yang lama. 
+                  Mereka dapat bertahan dalam kondisi yang baik selama bertahun-tahun, asalkan dirawat dengan benar. 
+                  Hal ini membuat bunga artificial sangat cocok untuk digunakan sebagai dekorasi rumah atau kantor yang ingin tetap indah tanpa harus mengganti bunga secara berkala.
+                  
+                  Selain itu, bunga artificial juga merupakan pilihan yang baik untuk hadiah. 
+                  Mereka tidak hanya memberikan kesan romantis dan indah, tetapi juga akan tetap terlihat segar dan cantik tanpa perlu perawatan khusus.
+                  
+                  Ada beberapa tips yang perlu diperhatikan saat memilih bunga artificial. 
+                  Pastikan untuk memilih bunga dengan kualitas bahan terbaik agar terlihat lebih nyata dan tahan lama. 
+                  Perhatikan juga warna dan bentuknya, pilih bunga yang menyerupai bunga asli sehingga kesan alaminya tetap terjaga.
+                  Untuk merawat bunga artificial, cukup bersihkan secara berkala dengan kain lembut untuk menghindari debu yang menempel. 
+                  Dengan perawatan yang tepat, bunga artificial Anda akan tetap terlihat segar dan cantik dalam jangka waktu yang lama."
+                  data-src="img/Buket bunga Artificial/12.jpg"
+                  ><i class="fa fa-info-circle me-2 text-primary"></i>
+                  Selengkapnya</a
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="border border-primary rounded position-relative vesitable-item"
+          >
+            <div class="vesitable-img">
+              <img
+                src="img/Buket kawat bulu/23.jpg"
+                class="img-fluid w-100 rounded-top bg-light"
+                alt=""
+              />
+            </div>
+            <div
+              class="text-white bg-primary px-3 py-1 rounded position-absolute"
+              style="top: 10px; right: 10px"
+            >
+              Artikel
+            </div>
+            <div class="p-4 rounded-bottom">
+              <h4>
+                Seni di Balik Bunga Kawat Bulu: Sentuhan Kreatif untuk Setiap
+                Acara
+              </h4>
+              <p>
+                6 Mei 2024 <br />
+                <br />
+                Pelajari lebih lanjut tentang proses kreatif dalam merangkai
+                bunga kawat bulu dan bagaimana mereka dapat menambah keunikan
+                pada acara Anda.
+              </p>
+              <div class="d-flex justify-content-center">
+                <a
+                  href="#"
+                  class="btn border border-secondary rounded-pill px-3 text-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#detailModal"
+                  data-title="Artikel"
+                  data-date="6 Mei 2024"
+                  data-content="Bunga kawat bulu menambah keunikan pada acara Anda dengan pesona yang tak tertandingi. Proses kreatif dalam merangkai bunga kawat bulu melibatkan teknik khusus yang digunakan oleh para perajin kami untuk menciptakan karya seni yang indah dan tahan lama.
+                   Penggunaan kawat dan bulu untuk membentuk kelopak dan batang bunga memungkinkan terciptanya desain yang unik dan artistik untuk setiap bunga. Bunga kawat bulu ini sangat cocok untuk berbagai acara, seperti dekorasi pernikahan, pesta ulang tahun, dan acara-acara khusus lainnya yang membutuhkan sentuhan kreatif dan elegan. 
+                   Selain itu, bunga kawat bulu juga ideal untuk hiasan meja dan hadiah yang unik. Untuk memastikan keindahan dan keawetan bunga kawat bulu ini, disarankan untuk menyimpannya di tempat yang kering dan menjauhkannya dari panas berlebih agar bentuk bulunya tetap terjaga. 
+                  Dengan sentuhan seni dan keunikan setiap bunga, bunga kawat bulu akan memberikan nilai estetika yang tinggi dan kesan mendalam pada setiap acara Anda."
+                  data-src="img/Buket kawat bulu/23.jpg"
+                  ><i class="fa fa-info-circle me-2 text-primary"></i>
+                  Selengkapnya</a
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="border border-primary rounded position-relative vesitable-item"
+          >
+            <div class="vesitable-img">
+              <img
+                src="img/Buket Uang/9.jpg"
+                class="img-fluid w-100 rounded-top"
+                alt=""
+              />
+            </div>
+            <div
+              class="text-white bg-primary px-3 py-1 rounded position-absolute"
+              style="top: 10px; right: 10px"
+            >
+              Artikel
+            </div>
+            <div class="p-4 rounded-bottom">
+              <h4>
+                Buket Uang: Hadiah Praktis dan Elegan untuk Segala Kesempatan
+              </h4>
+              <p>
+                15 Mei 2024 <br />
+                <br />
+                Temukan bagaimana buket uang dapat menjadi hadiah yang sempurna
+                nan bermakna, dengan menggabungkan keindahan seni dan nilai
+                praktis.
+              </p>
+              <div class="d-flex justify-content-center">
+                <a
+                  href="#"
+                  class="btn border border-secondary rounded-pill px-3 text-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#detailModal"
+                  data-title="Artikel"
+                  data-date="6 Mei 2024"
+                  data-content="Buket uang adalah salah satu bentuk hadiah yang semakin populer belakangan ini, menggabungkan keindahan seni lipat uang dengan nilai praktis yang tinggi.
+                   Dalam artikel ini, kita akan menjelaskan bagaimana buket uang bisa menjadi hadiah yang sempurna untuk berbagai acara, mulai dari ulang tahun, pernikahan, hingga kelulusan. 
+                   Kami juga akan membahas berbagai desain buket uang yang kami tawarkan dan memberikan panduan tentang cara memberikan buket uang sebagai hadiah yang elegan dan bermakna. 
+                  
+                  Desain buket uang bisa sangat bervariasi, menggabungkan lipatan uang yang artistik dengan elemen dekoratif lainnya. Berikut adalah beberapa desain yang populer:
+                  1.	Buket Klasik: Menggunakan uang yang dilipat menjadi bentuk bunga seperti mawar atau tulip, kemudian disusun dalam buket dengan tambahan bunga artificial atau asli untuk memberikan kesan yang lebih alami.
+                  2.	Buket Modern: Memanfaatkan berbagai bentuk lipatan uang, seperti hati, burung, atau bentuk geometris lainnya, yang kemudian dirangkai dalam buket yang lebih futuristik dan minimalis.
+                  3.	Buket Personal: Menambahkan elemen personal seperti foto, pesan, atau elemen dekoratif yang memiliki makna khusus bagi penerima, menjadikan buket ini lebih personal dan unik.
+                  4.	Buket Kombinasi: Menggabungkan uang dengan item lain seperti permen, cokelat, atau barang-barang kecil lainnya yang disukai oleh penerima, menciptakan buket yang tidak hanya cantik tapi juga fungsional.
+                  "
+                  data-src="img/Buket kawat bulu/23.jpg"
+                  ><i class="fa fa-info-circle me-2 text-primary"></i>
+                  Selengkapnya</a
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="border border-primary rounded position-relative vesitable-item"
+          >
+            <div class="vesitable-img">
+              <img
+                src="img/Buket Wadah/10.jpg"
+                class="img-fluid w-100 rounded-top"
+                alt=""
+              />
+            </div>
+            <div
+              class="text-white bg-primary px-3 py-1 rounded position-absolute"
+              style="top: 10px; right: 10px"
+            >
+              Artikel
+            </div>
+            <div class="p-4 rounded-bottom">
+              <h4>
+                Dekorasi Rumah dengan Buket Wadah: Solusi Estetis dan Praktis
+              </h4>
+              <p>
+                28 Mei 2024 <br />
+                <br />
+                Artikel ini menjelaskan berbagai manfaat dari buket wadah dan
+                bagaimana mereka dapat digunakan untuk mempercantik ruangan
+                Anda.
+              </p>
+              <div class="d-flex justify-content-center">
+                <a
+                  href="#"
+                  class="btn border border-secondary rounded-pill px-3 text-primary"
+                  ><i class="fa fa-info-circle me-2 text-primary"></i>
+                  Selengkapnya</a
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="border border-primary rounded position-relative vesitable-item"
+          >
+            <div class="vesitable-img">
+              <img
+                src="img/Hand Buket/14.jpg"
+                class="img-fluid w-100 rounded-top"
+                alt=""
+              />
+            </div>
+            <div
+              class="text-white bg-primary px-3 py-1 rounded position-absolute"
+              style="top: 10px; right: 10px"
+            >
+              Artikel
+            </div>
+            <div class="p-4 rounded-bottom">
+              <h4>
+                Pilih buket bunga terbaik untuk hari istimewa Anda di Flower,
+                Bouquet Shop.
+              </h4>
+              <p>
+                1 Juni 2024 <br />
+                <br />
+                FlowerBouquetShop menawarkan berbagai macam hand bouquet yang
+                cantik dan elegan, yang cocok untuk pernikahan, ulang tahun,
+                atau acara spesial lainnya.
+              </p>
+              <div class="d-flex justify-content-center">
+                <a
+                  href="#"
+                  class="btn border border-secondary rounded-pill px-3 text-primary"
+                  ><i class="fa fa-info-circle me-2 text-primary"></i>
+                  Selengkapnya</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Arsip artikel End -->
+
+    <!-- Detail Artikel Modal Start -->
+    <div
+      class="modal fade"
+      id="detailModal"
+      tabindex="-1"
+      aria-labelledby="detailModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTitle">
+              Merayakan Kelulusan dengan Buket Graduation dari FlowerBouquetShop
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              id="modalImage"
+              src=""
+              alt="Article Image"
+              class="img-fluid mb-3"
+            />
+            <p>
+              <strong
+                ><center>
+                  Merayakan Kelulusan dengan Buket Graduation dari
+                  FlowerBouquetShop
+                </center></strong
+              >
+            </p>
+            <p>
+              <strong>Tanggal:</strong> <span id="modalDate">25 Juni 2024</span>
+            </p>
+            <p id="modalContent"></p>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Tutup
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detail Artikel Modal End -->
+
+
+     <!-- Footer Start -->
+     <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
+      <div class="container py-5">
+          <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
+              <div class="row g-4">
+                  <div class="col-lg-9">
+                      <a href="#">
+                          <h1 class="text-primary mb-0">FlowerBouquetShop</h1>
+                          <p class="text-secondary mb-0">Toko Buket Terpercaya</p>
+                      </a>
+                  </div>
+                  <div class="col-lg-3">
+                      <div class="d-flex justify-content-end pt-3">
+                          <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                          <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                          <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-youtube"></i></a>
+                          <a class="btn btn-outline-secondary btn-md-square rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row g-5">
+              <div class="col-lg-3 col-md-6">
+                  <div class="footer-item">
+                      <h4 class="text-light mb-3">Sentuhan indah untuk momen spesial!</h4>
+                      <p class="mb-4">
+                          Apakah Anda mencari hadiah untuk momen spesial atau dekorasi untuk acara penting ?
+                          Koleksi kami siap memenuhi kebutuhan Anda.
+                      </p>
+                      <a href="" class="btn border-secondary py-2 px-4 rounded-pill text-primary">Baca Selengkapnya</a>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                  <div class="d-flex flex-column text-start footer-item">
+                      <h4 class="text-light mb-3">Info Toko</h4>
+                      <a class="btn-link" href="">Tentang Kami</a>
+                      <a class="btn-link" href="">Kontak Kami</a>
+                      <a class="btn-link" href="">Kebijakan Pribadi</a>
+                      <a class="btn-link" href="">Syarat & Ketentuan</a>
+                      <a class="btn-link" href="">FAQ & Bantuan</a>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                  <div class="d-flex flex-column text-start footer-item">
+                      <h4 class="text-light mb-3">Akun</h4>
+                      <a class="btn-link" href="">Akun FlowerBouquetShop</a>
+                      <a class="btn-link" href="">Detail Produk</a>
+                      <a class="btn-link" href="">Keranjang</a>
+                      <a class="btn-link" href="">Riwayat Pemesanan</a>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                  <div class="footer-item">
+                      <h4 class="text-light mb-3">Kontak</h4>
+                      <p>Alamat: Jalan Hangtuah, Indonesia</p>
+                      <p>Email: BouquetShop@gmail.com</p>
+                      <p>Telepon: +0123 4567 8910</p>
+                      <p>Pembayaran melalui</p>
+                      <img src="img/payment.png" class="img-fluid" alt="">
+                  </div>
+              </div>
+              <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                  <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>FlowerBouquetShop</a>, All right reserved.</span>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Footer End -->
+
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <!-- Tambahkan skrip khusus Anda di sini -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var detailModal = document.getElementById("detailModal");
+        detailModal.addEventListener("show.bs.modal", function (event) {
+          var button = event.relatedTarget;
+          var title = button.getAttribute("data-title");
+          var date = button.getAttribute("data-date");
+          var content = button.getAttribute("data-content");
+          var src = button.getAttribute("data-src");
+
+          var modalTitle = detailModal.querySelector(".modal-title");
+          var modalDate = detailModal.querySelector("#modalDate");
+          var modalContent = detailModal.querySelector("#modalContent");
+          var modalImage = detailModal.querySelector("#modalImage");
+
+          modalTitle.textContent = title;
+          modalDate.textContent = date;
+          modalContent.textContent = content;
+          modalTitle.textContent = title + " - " + date;
+          modalContent.innerHTML = content.replace(/\n/g, "<br>");
+          modalImage.src = src;
+         
+        });
+      });
+    </script>
+  </body>
+</html>
